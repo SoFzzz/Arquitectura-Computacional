@@ -1,4 +1,4 @@
-/* window.TB: helpers comunes, íconos, registro de secciones, tema, navegación, control segmentado y modo presentación */
+/* window.TB: helpers comunes, íconos, registro de secciones, tema, navegación y modo presentación */
 (function () {
   "use strict";
   var D = window.DATOS || { entornos: [], pendientes: [], slo: { p95_ms: 300, error_pct: 1 } };
@@ -137,7 +137,6 @@
       iniciarTema();
       pintarTodo();
       iniciarNav();
-      iniciarSegmentado();
       iniciarPresentacion();
     }
   };
@@ -226,44 +225,9 @@
     }, { passive: true });
   }
 
-  /* ---------- control segmentado flotante ---------- */
-  function iniciarSegmentado() {
-    var grupos = [
-      { nombre: "Resultados", destino: "resumen", ids: ["resumen", "carga", "entornos", "comparar", "vivo"] },
-      { nombre: "Análisis", destino: "latencia", ids: ["latencia", "recursos", "espera", "escalado", "comparacion"] }
-    ];
-    var caja = document.createElement("div");
-    caja.id = "segmentado"; caja.setAttribute("role", "tablist"); caja.setAttribute("aria-label", "Grupos de secciones");
-    var botones = grupos.map(function (g, i) {
-      var b = document.createElement("button");
-      b.type = "button"; b.setAttribute("role", "tab"); b.textContent = g.nombre;
-      b.setAttribute("aria-selected", i === 0 ? "true" : "false"); b.tabIndex = i === 0 ? 0 : -1;
-      b.addEventListener("click", function () {
-        var t = document.getElementById(g.destino); if (t) t.scrollIntoView({ behavior: "smooth", block: "start" });
-        marcar(i);
-      });
-      b.addEventListener("keydown", function (ev) {
-        var d = ev.key === "ArrowRight" ? 1 : ev.key === "ArrowLeft" ? -1 : 0; if (!d) return;
-        ev.preventDefault(); var j = (i + d + grupos.length) % grupos.length; botones[j].focus(); botones[j].click();
-      });
-      caja.appendChild(b); return b;
-    });
-    function marcar(k) { botones.forEach(function (b, i) { b.setAttribute("aria-selected", i === k ? "true" : "false"); b.tabIndex = i === k ? 0 : -1; }); }
-    document.body.appendChild(caja);
-    if (!("IntersectionObserver" in window)) return;
-    var obs = new IntersectionObserver(function (ents) {
-      ents.forEach(function (en) {
-        if (!en.isIntersecting) return;
-        grupos.forEach(function (g, i) { if (g.ids.indexOf(en.target.id) >= 0) marcar(i); });
-      });
-    }, { rootMargin: "-40% 0px -55% 0px" });
-    [].slice.call(document.querySelectorAll("section.bloque")).forEach(function (s) { obs.observe(s); });
-  }
-
   /* ---------- modo presentación ---------- */
   function iniciarPresentacion() {
     var body = document.body;
-    var ind = document.getElementById("indicador-pres");
     var btn = document.getElementById("btn-presentar");
     var pantallas = function () { return [].slice.call(document.querySelectorAll("header.portada, section.bloque")); };
     function actual() {
@@ -275,15 +239,9 @@
       });
       return mejor;
     }
-    function etiqueta(i) {
-      var l = pantallas(), h = l[i].querySelector("h2, h1");
-      if (ind) ind.textContent = (i + 1) + " / " + l.length + (h ? " · " + h.textContent.trim() : "");
-    }
-    function indicar() { if (body.classList.contains("presentar")) etiqueta(actual()); }
     function ir(i) {
       var l = pantallas(); i = Math.max(0, Math.min(l.length - 1, i));
       l[i].scrollIntoView({ behavior: "auto", block: "start" });
-      etiqueta(i);
     }
     function alternar(on) {
       var i = actual();
@@ -295,7 +253,6 @@
       setTimeout(function () { ir(i); window.dispatchEvent(new Event("resize")); }, 60);
     }
     if (btn) btn.addEventListener("click", function () { alternar(!body.classList.contains("presentar")); });
-    window.addEventListener("scroll", indicar, { passive: true });
     document.addEventListener("keydown", function (ev) {
       var t = ev.target, tag = t && t.tagName;
       if (ev.ctrlKey || ev.metaKey || ev.altKey) return;

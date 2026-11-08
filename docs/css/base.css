@@ -81,13 +81,6 @@ nav.secciones .enlaces a:hover { background: var(--surface-2); color: var(--ink)
 nav.secciones .enlaces a.activo { background: var(--surface-3); color: var(--ink); }
 nav.secciones .enlaces a.activo svg { color: var(--primary-ink); }
 
-/* ---------- control segmentado flotante ---------- */
-#segmentado { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); z-index: 45; display: inline-flex; gap: 4px; padding: 4px; border-radius: 999px; background: var(--surface-3); border: 1px solid var(--border); box-shadow: 0 8px 24px rgba(0,0,0,.18); }
-#segmentado button { appearance: none; border: 0; background: transparent; color: var(--ink-2); font: inherit; font-size: .875rem; font-weight: 600; height: 36px; padding: 0 20px; border-radius: 999px; cursor: pointer; transition: background var(--t), color var(--t); }
-#segmentado button:hover { color: var(--ink); }
-#segmentado button[aria-selected="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 3px rgba(0,0,0,.18); }
-@media (max-width: 479px) { #segmentado { display: none; } }
-body.presentar #segmentado { display: none; }
 
 /* ---------- portada ---------- */
 header.portada { padding-block: 96px 64px; display: grid; gap: 24px; }
@@ -226,7 +219,6 @@ pre.cmd, pre.cmd * { font-feature-settings: normal; }
 footer { padding-block: 48px 96px; border-top: 1px solid var(--border); }
 
 /* ---------- modo presentación ---------- */
-#indicador-pres { display: none; }
 html:has(body.presentar) { font-size: 125%; scroll-behavior: auto; scroll-padding-top: 0; }
 body.presentar header.barra { display: none; }
 body.presentar section.bloque, body.presentar header.portada { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
@@ -238,7 +230,6 @@ body.presentar .cab .lead { max-width: 80ch; }
 body.presentar .lienzo.protagonista { height: min(70vh, 620px); }
 body.presentar .lienzo { height: min(52vh, 460px); }
 body.presentar footer { display: none; }
-body.presentar #indicador-pres { display: block; position: fixed; right: 20px; bottom: 16px; z-index: 60; background: var(--ink); color: var(--bg); font-size: 1rem; font-weight: 500; font-variant-numeric: tabular-nums; padding: 8px 18px; border-radius: 999px; }
 html:has(body.presentar) .lienzo { }
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
