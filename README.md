@@ -2,7 +2,7 @@
 
 Proyecto final de **Arquitectura Computacional** (UCC). Medimos la misma aplicación web, con la misma carga, en una máquina física, en contenedores Docker y en una instancia de AWS. Con esos datos decidimos en qué máquina debería correr y de qué tamaño.
 
-**Tablero interactivo:** https://sofzzz.github.io/Arquitectura-Computacional/
+**Tablero interactivo:** [https://sofzzz.github.io/Arquitectura-Computacional/](https://sofzzz.github.io/Arquitectura-Computacional/)
 
 El tablero reemplaza al informe. Muestra la aplicación, cómo se generó la carga, qué se midió, la comparación entre entornos y la recomendación, con gráficas y una reproducción "en vivo" de las pruebas.
 
