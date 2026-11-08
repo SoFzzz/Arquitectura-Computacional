@@ -178,7 +178,7 @@
       '<div class="dato"><b>' + E.length + "</b><span>entornos medidos" + (D.pendientes.length ? " · " + D.pendientes.length + " pendiente(s)" : "") + "</span></div>" +
       '<div class="dato"><b>' + nf(D.slo.p95_ms) + " ms</b><span>p95 máximo aceptado (acuerdo de servicio)</span></div>";
     var pie = document.getElementById("pie");
-    if (pie) pie.innerHTML = "Spring PetClinic · datos crudos en <code>medicion/resultados/</code> · generado " + TB.esc(String(D.generado || "").replace("T", " ")) + ". Precios on-demand de AWS us-east-1 consultados el 8 de noviembre de 2026.";
+    if (pie) pie.innerHTML = 'Spring PetClinic · <a href="https://github.com/SoFzzz/Arquitectura-Computacional" target="_blank" rel="noopener">Repositorio en GitHub</a> · datos crudos en <code>medicion/resultados/</code> · generado ' + TB.esc(String(D.generado || "").replace("T", " ")) + '. Precios on-demand de AWS us-east-1 consultados el 8 de noviembre de 2026.';
   }
 
   /* ---------- tema ---------- */
