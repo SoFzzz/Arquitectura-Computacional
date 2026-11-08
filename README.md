@@ -56,7 +56,6 @@ PetClinic está **limitada por CPU**: es el único recurso que llega cerca del 1
 
 Se **descarta el contenedor de 1 CPU / 512 MB**: no cumple (p95 de 543 ms), está al 100 % de su CPU y le sobra memoria.
 
-Las respuestas a las preguntas de la sustentación están en [`PREGUNTAS_SUSTENTACION.md`](PREGUNTAS_SUSTENTACION.md).
 
 ---
 
@@ -75,7 +74,6 @@ medicion/                   Cómo se midió
   config_entornos.json      Nombre, precio y capacidades de cada entorno
   aws/GUIA_AWS.md           Paso a paso para medir en EC2
   resultados/<entorno>/     Datos crudos: peticiones.csv, sistema.csv, resumen.json, entorno.json, app.log
-PREGUNTAS_SUSTENTACION.md   Respuestas a las 4 preguntas, con sugerencias de mejora
 ```
 
 ## Reproducir
