@@ -46,7 +46,7 @@
     var cu = TB.cuerpo("escalado"); if (!cu) return;
     var E = TB.E.filter(function (e) { return e.escalado && e.escalado.length; });
     var lead = document.querySelector("#escalado .cab .lead");
-    if (lead) lead.textContent = "Después de la carga sostenida subimos los usuarios concurrentes en escalones de 45 s. Mueve el control para ver qué le pasa a cada entorno. Todos los escalones son medidos.";
+    if (lead) lead.textContent = "Después de la carga sostenida subimos los usuarios concurrentes en escalones de 45 s. Todos los escalones son medidos.";
     if (!E.length) { cu.innerHTML = '<p class="aviso-datos">Todavía no hay datos de escalado.</p>'; return; }
 
     var P = protocolo(), pausa = P.pausa_s != null ? P.pausa_s : 0.05, slo = TB.D.slo.p95_ms;
@@ -57,13 +57,8 @@
 
     var etiquetas = VUS.map(function (v) { return "<span data-i='" + VUS.indexOf(v) + "'>" + v + "</span>"; }).join("");
     cu.innerHTML =
-      '<div class="panel e-sim"><div><h3><span class="icono-chip primario">' + TB.icono("capas", 20) + '</span>Simulador: ¿qué pasa si suben los usuarios?</h3><p class="sub">Escalones medidos de 5 a 120 usuarios concurrentes (hasta 4 veces la carga sostenida de 30).</p></div>' +
-      '<div class="e-sim-cab"><div class="e-vus" id="e-vus"></div><div class="small" id="e-vus-x"></div></div>' +
-      '<div><input type="range" id="e-rango" min="0" max="' + (total - 1) + '" step="1" value="' + IDX + '" aria-label="Usuarios concurrentes"><div class="e-pasos" id="e-pasos" style="margin-top:6px">' + etiquetas + "</div></div>" +
-      '<div id="e-aviso"></div><div class="tabla"><table id="e-tabla"></table></div>' +
-      '<p class="lectura">Cómo leerla: cada fila es un entorno con los datos del escalón elegido. El estado compara el p95 con el máximo aceptado (' + slo + ' ms).</p></div>' +
       '<div class="panel"><h3><span class="icono-chip primario">' + TB.icono("rayo", 20) + '</span><span id="e-t-thr"></span></h3><p class="sub">Peticiones por segundo según los usuarios concurrentes (eje horizontal logarítmico) · fuente: escalado de cada entorno</p><div class="leyenda" id="e-ley-thr"></div><div class="lienzo protagonista"><canvas id="e-esc-thr"></canvas></div><p class="lectura">Cómo leerla: el punto grande es la rodilla, el último escalón que cumple el SLO. Cuando la curva se aplana, el entorno llegó a su techo.</p></div>' +
-      '<div class="panel"><h3><span class="icono-chip primario">' + TB.icono("reloj", 20) + '</span><span id="e-t-escp95"></span></h3><p class="sub">Latencia p95 en ms según los usuarios concurrentes (ambos ejes logarítmicos) · fuente: escalado de cada entorno</p><div class="leyenda" id="e-ley-p95"></div><div class="lienzo protagonista"><canvas id="e-esc-p95"></canvas></div><p class="lectura">Cómo leerla: más abajo es mejor. La zona rosada es lo que supera el acuerdo de ' + slo + ' ms; la barra vertical sigue el control de arriba.</p></div>' +
+      '<div class="panel"><h3><span class="icono-chip primario">' + TB.icono("reloj", 20) + '</span><span id="e-t-escp95"></span></h3><p class="sub">Latencia p95 en ms según los usuarios concurrentes (ambos ejes logarítmicos) · fuente: escalado de cada entorno</p><div class="leyenda" id="e-ley-p95"></div><div class="lienzo protagonista"><canvas id="e-esc-p95"></canvas></div><p class="lectura">Cómo leerla: más abajo es mejor. La zona rosada es lo que supera el acuerdo de ' + slo + ' ms.</p></div>' +
       '<div id="e-concl"></div>';
 
     /* títulos y conclusiones calculados */
@@ -191,7 +186,7 @@
     var maxT = Math.max.apply(null, E.map(xMax));
 
     var optBase = function (extra) { return TB.opciones(extra); };
-    graf.thr = TB.grafica("e-esc-thr", { type: "line", data: { datasets: E.map(function (e) { return ds(e, "rps"); }) }, plugins: [plugVus, plugRod],
+    graf.thr = TB.grafica("e-esc-thr", { type: "line", data: { datasets: E.map(function (e) { return ds(e, "rps"); }) }, plugins: [plugRod],
       options: optBase({ parsing: false,
         layout: { padding: { right: 8 } },
         plugins: { tooltip: { callbacks: { title: function (c) { return TB.nf(c[0].parsed.x) + " usuarios"; }, label: function (c) { return " " + c.dataset.label + ": " + TB.nf(c.parsed.y) + " req/s"; } } } },
@@ -199,13 +194,11 @@
     var ejeY = { type: "logarithmic", min: yMin, max: yMax, beginAtZero: false, title: tit("p95 (ms, escala log)"),
       afterBuildTicks: function (ax) { ax.ticks = cand.filter(function (c) { return c >= yMin && c <= yMax; }).map(function (v) { return { value: v }; }); },
       ticks: { callback: function (v) { return TB.nf(v); } } };
-    graf.p95 = TB.grafica("e-esc-p95", { type: "line", data: { datasets: E.map(function (e) { return ds(e, "p95_ms"); }) }, plugins: [plugSLO, plugVus, plugRod],
+    graf.p95 = TB.grafica("e-esc-p95", { type: "line", data: { datasets: E.map(function (e) { return ds(e, "p95_ms"); }) }, plugins: [plugSLO, plugRod],
       options: optBase({ parsing: false,
         plugins: { tooltip: { callbacks: { title: function (c) { return TB.nf(c[0].parsed.x) + " usuarios"; }, label: function (c) { return " " + c.dataset.label + ": " + TB.nf(c.parsed.y, 1) + " ms"; } } } },
         scales: { x: ejeX, y: ejeY } }) });
 
-    document.getElementById("e-rango").addEventListener("input", function (ev) { IDX = +ev.target.value; tabla(); });
-    tabla();
   }
 
   TB.seccion("escalado", render);

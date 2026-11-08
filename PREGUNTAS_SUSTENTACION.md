@@ -141,7 +141,7 @@ Tres pruebas de que es la CPU:
    - **Disco:** la base de datos está en RAM.
    - **Red:** ×10 serían unos 15 MB/s, que cualquier red aguanta.
 
-**Qué mostrar:** *×10 la carga* (el simulador con el control deslizante y las curvas de throughput y p95 según los usuarios).
+**Qué mostrar:** *×10 la carga* (las curvas de throughput y p95 según los usuarios).
 
 **Si preguntan...**
 - *"¿Por qué no hubo errores?"* Nuestros usuarios virtuales esperan cada respuesta antes de pedir la siguiente: si la aplicación se pone lenta, piden más despacio. Con usuarios reales que siguen llegando, con 10 veces la carga sí empezarían los errores. Eso no lo medimos.
