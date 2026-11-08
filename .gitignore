@@ -1,0 +1,14 @@
+# Llaves y credenciales: nunca al repositorio
+*.pem
+*.key
+*.ppk
+
+# Paquetes y registros intermedios
+*.tgz
+*.rar
+*.log
+!medicion/resultados/**/app.log
+
+# Python
+__pycache__/
+*.pyc

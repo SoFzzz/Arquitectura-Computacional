@@ -1,0 +1,17 @@
+{
+  "peticiones": 6795,
+  "errores": 0,
+  "tasa_error_pct": 0.0,
+  "rps": 151.0,
+  "lat_media_ms": 82.11,
+  "p50_ms": 54.92,
+  "p90_ms": 163.42,
+  "p95_ms": 246.23,
+  "p99_ms": 346.47,
+  "max_ms": 753.67,
+  "red_entrada_kbs": 436.33,
+  "red_salida_kbs": 15.95,
+  "vus": 20,
+  "duracion_s": 45,
+  "pausa_s": 0.05
+}

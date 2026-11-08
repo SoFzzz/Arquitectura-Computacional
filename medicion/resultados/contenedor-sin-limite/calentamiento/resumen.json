@@ -1,0 +1,18 @@
+{
+  "fase": "calentamiento",
+  "vus": 30,
+  "duracion_s": 60,
+  "peticiones": 20277,
+  "errores": 0,
+  "tasa_error_pct": 0.0,
+  "rps": 337.95,
+  "lat_media_ms": 38.29,
+  "p50_ms": 21.82,
+  "p90_ms": 72.98,
+  "p95_ms": 112.92,
+  "p99_ms": 249.36,
+  "max_ms": 1512.78,
+  "red_entrada_kbs": 976.9,
+  "red_salida_kbs": 35.73,
+  "pausa_s": 0.05
+}

@@ -1,0 +1,55 @@
+/* Agente D: #latencia y #recursos (sistema Premium) */
+#latencia .leyenda, #recursos .leyenda { margin-bottom: 20px; }
+#latencia .nom, #recursos .nom { display: inline-flex; gap: 8px; align-items: center; font-weight: 500; }
+.panel h3 { display: flex; align-items: center; gap: 12px; }
+
+/* mapa de calor por endpoint */
+.rampa-leyenda { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; font-size: .875rem; color: var(--muted); margin-bottom: 16px; font-variant-numeric: tabular-nums; }
+.rampa-leyenda em { font-style: normal; color: var(--muted); margin-left: 4px; }
+.rampa { display: inline-flex; border-radius: 6px; overflow: hidden; }
+.rampa i { width: 32px; height: 12px; display: block; }
+table.mapa { border-collapse: separate; border-spacing: 4px; width: 100%; font-size: .875rem; }
+table.mapa th, table.mapa td { border-bottom: 0; padding: 8px 12px; height: 56px; }
+table.mapa thead th { background: transparent; height: auto; padding-bottom: 8px; white-space: nowrap; vertical-align: bottom; }
+table.mapa th.op { background: transparent; text-transform: none; letter-spacing: 0; font-weight: 500; color: var(--ink); min-width: 190px; font-size: .875rem; }
+table.mapa th.op b { display: block; font-size: 1rem; font-weight: 500; }
+table.mapa th.op code { background: none; padding: 0; color: var(--muted); font-size: .75rem; word-break: break-all; }
+table.mapa td.hm { text-align: center; font-weight: 600; border-radius: 10px; font-size: .875rem; }
+@media (max-width: 759px) { table.mapa th, table.mapa td { padding: 8px 4px; } table.mapa th.op { min-width: 104px; } }
+
+/* marca de límite en leyendas */
+.barra-lim { display: inline-block; width: 3px; height: 16px; background: var(--ink); border-radius: 2px; }
+
+/* memoria: medidores con pista de 8 px */
+.balas { display: grid; gap: 24px; margin-top: 4px; }
+.bala-pista { position: relative; overflow: hidden; }
+.bala-pista i { position: absolute; top: 0; height: 100%; display: block; border-radius: 0; }
+.bala-pista i.repo { border-radius: 999px 0 0 999px; }
+.bala-pista b.lim { position: absolute; right: 0; top: 0; width: 3px; height: 100%; background: var(--ink); }
+.bala-val { font-size: .875rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+/* mapas de calor por núcleo */
+.calor-ley { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; font-size: .875rem; color: var(--muted); margin-bottom: 24px; font-variant-numeric: tabular-nums; }
+.calor-ley i { display: block; width: min(100%, 260px); height: 12px; border-radius: 999px; }
+.calor-ley em { font-style: normal; }
+.calor-rejilla { display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; }
+@media (min-width: 760px) { .calor-rejilla { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 40px; } }
+.calor-celda { min-width: 0; }
+.calor-nom { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; margin-bottom: 8px; font-size: 1rem; }
+.calor-nom .mut { color: var(--muted); font-size: .875rem; font-variant-numeric: tabular-nums; }
+canvas.calor { display: block; width: 100%; height: 250px; }
+
+/* alturas */
+#latencia .lienzo.alto { height: 420px; }
+#recursos .lienzo.alto { height: 360px; }
+#latencia .lienzo.rep { height: 340px; }
+@media (max-width: 759px) {
+  #latencia .lienzo.protagonista { height: 380px; }
+  #latencia .lienzo.alto, #latencia .lienzo.rep, #recursos .lienzo.alto { height: 340px; }
+  #recursos .lienzo.protagonista { height: 340px; }
+  canvas.calor { height: 230px; }
+}
+@media (min-width: 760px) {
+  #latencia .rejilla-2 .panel { display: flex; flex-direction: column; }
+  #latencia .rejilla-2 .lienzo.alto { flex: 1 1 auto; height: auto; min-height: 420px; }
+}

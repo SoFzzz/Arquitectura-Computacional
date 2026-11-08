@@ -1,0 +1,18 @@
+{
+  "fase": "escalado_010",
+  "vus": 10,
+  "duracion_s": 45,
+  "peticiones": 7902,
+  "errores": 0,
+  "tasa_error_pct": 0.0,
+  "rps": 175.6,
+  "lat_media_ms": 6.42,
+  "p50_ms": 4.16,
+  "p90_ms": 14.02,
+  "p95_ms": 19.88,
+  "p99_ms": 31.53,
+  "max_ms": 75.4,
+  "red_entrada_kbs": 508.98,
+  "red_salida_kbs": 18.57,
+  "pausa_s": 0.05
+}

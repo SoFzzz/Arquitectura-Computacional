@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dimensionar PetClinic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/sec-c.css">
+<link rel="stylesheet" href="css/sec-d.css">
+<link rel="stylesheet" href="css/sec-e.css">
+</head>
+<body>
+
+<header class="barra" id="barra">
+  <div class="wrap">
+    <div class="fila1">
+      <a class="marca" href="#portada"><span class="logo" data-icono="chip" data-tam="18"></span>Dimensionar PetClinic</a>
+      <div class="acciones">
+        <button class="btn icono" id="btn-tema" type="button" aria-label="Cambiar tema claro u oscuro" title="Cambiar tema"></button>
+        <button class="btn" id="btn-presentar" type="button" aria-label="Modo presentación (tecla P)"><span data-icono="presentar" data-tam="16"></span><span class="txt">Presentar</span></button>
+      </div>
+    </div>
+    <nav class="secciones" aria-label="Secciones del tablero">
+      <div class="enlaces">
+      <a href="#resumen" data-icono="objetivo">Veredicto</a>
+      <a href="#carga" data-icono="terminal">Aplicación y carga</a>
+      <a href="#entornos" data-icono="servidor">Entornos</a>
+      <a href="#comparar" data-icono="balanza">Cara a cara</a>
+      <a href="#vivo" data-icono="play">En vivo</a>
+      <a href="#latencia" data-icono="reloj">Latencia</a>
+      <a href="#recursos" data-icono="cpu">Recursos</a>
+      <a href="#espera" data-icono="pregunta">¿Dónde espera?</a>
+      <a href="#escalado" data-icono="grafica">×10 la carga</a>
+      <a href="#comparacion" data-icono="dinero">Costo</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<header class="portada wrap" id="portada">
+  <span class="eyebrow">Arquitectura Computacional · Proyecto final · Momento evaluativo 3</span>
+  <h1>¿En qué máquina debería correr Spring PetClinic, y con qué datos lo sostenemos?</h1>
+  <p class="lead">Medimos la misma aplicación, con el mismo guion de carga y el mismo monitor, en una máquina física, en contenedores con límites definidos y en una instancia de nube. Cada número de este tablero sale de un archivo crudo que se puede volver a generar.</p>
+  <div class="meta" id="meta"></div>
+</header>
+
+<main>
+<section class="bloque" id="resumen"><div class="wrap">
+  <header class="cab"><span class="rotulo">Recomendación</span><h2>Veredicto</h2><p class="lead">La respuesta primero: qué entorno elegimos, bajo qué acuerdo de servicio lo juzgamos y cómo queda cada opción en una sola tabla.</p></header>
+  <div class="cuerpo"></div>
+</div></section>
+
+<section class="bloque" id="carga"><div class="wrap">
+  <header class="cab"><span class="rotulo">Sección 1 y 2 del informe</span><h2>La aplicación y cómo le generamos carga</h2><p class="lead">Spring PetClinic es la aplicación de ejemplo oficial de Spring Boot: una clínica veterinaria con dueños, mascotas, veterinarios y visitas, sobre una base H2 en memoria. Cada usuario virtual repite este flujo con conexiones persistentes y 50 ms de pausa entre peticiones.</p></header>
+  <div class="cuerpo"></div>
+</div></section>
+
+<section class="bloque" id="entornos"><div class="wrap">
+  <header class="cab"><span class="rotulo">Ficha técnica y precio de cada opción</span><h2>Los entornos comparados</h2><p class="lead">El generador de carga corre en la misma máquina que la aplicación en todos los casos, así la red entre ambos es local y la comparación queda en igualdad de condiciones. Su consumo de CPU se registra aparte para descontarlo.</p></header>
+  <div class="cuerpo"></div>
+</div></section>
+
+<section class="bloque" id="comparar"><div class="wrap">
+  <header class="cab"><span class="rotulo">La comparación es la pregunta</span><h2>Cara a cara: los entornos comparados</h2><p class="lead">Todos los entornos contra la máquina física, con las mismas unidades: cuánto rinde cada uno, qué tan rápido responde y cuánto cuesta lo que rinde.</p></header>
+  <div class="cuerpo"></div>
+</div></section>
+
+<section class="bloque" id="vivo"><div class="wrap">
+  <header class="cab"><span class="rotulo">Repetición de una prueba real, segundo a segundo</span><h2>Prueba en vivo</h2><p class="lead">Reproduce la repetición mediana de la carga sostenida de los entornos que elijas, a la vez. Cada barra es un núcleo lógico del procesador. Los datos son los de los archivos <code>sistema.csv</code> y <code>peticiones.csv</code> de esa repetición.</p></header>
+  <div class="cuerpo"></div>
+</div></section>
+
+<section class="bloque" id="latencia"><div class="wrap">
+  <header class="cab"><span class="rotulo">p50, p95 y p99, no el promedio</span><h2>Latencia bajo carga sostenida</h2><p class="lead">El promedio esconde la cola: unas pocas peticiones lentas son las que siente el usuario. Mostramos la mediana de tres repeticiones para cada percentil.</p></header>
+  <div class="cuerpo"></div>
+</div></section>
+
+<section class="bloque" id="recursos"><div class="wrap">
+  <header class="cab"><span class="rotulo">CPU, memoria residente, disco y red</span><h2>Consumo de recursos</h2><p class="lead">CPU promedio y pico, por núcleo; memoria que la JVM usa de verdad (residente), no la que reserva; operaciones de disco (IOPS y MB/s); tráfico de red de entrada y salida.</p></header>
+  <div class="cuerpo"></div>
+</div></section>
+
+<section class="bloque" id="espera"><div class="wrap">
+  <header class="cab"><span class="rotulo">La pregunta que ordena todo</span><h2>¿Dónde está esperando la aplicación?</h2><p class="lead">Cada recurso se expresa como porcentaje de lo que el entorno tiene disponible. El que está cerca del 100 % es el cuello de botella; los que están casi en cero no son el problema.</p></header>
+  <div class="cuerpo"></div>
+</div></section>
+
+<section class="bloque" id="escalado"><div class="wrap">
+  <header class="cab"><span class="rotulo">"Si la carga se multiplicara por diez, ¿qué se rompería primero?"</span><h2>Si la carga se multiplica</h2><p class="lead">Después de la carga sostenida subimos los usuarios concurrentes en escalones de 45 s. Cuando el throughput deja de crecer y la latencia se dispara, el entorno llegó a su límite.</p></header>
+  <div class="cuerpo"></div>
+</div></section>
+
+<section class="bloque" id="comparacion"><div class="wrap">
+  <header class="cab"><span class="rotulo">Comparación justa: mismas mediciones, fichas y precios reales</span><h2>Comparación y costo</h2><p class="lead">Para cada opción: si aguanta la carga medida, qué le sobra, qué le falta y cuánto cuesta al mes. El costo por millón de peticiones permite comparar máquinas de tamaños distintos.</p></header>
+  <div class="cuerpo"></div>
+</div></section>
+
+</main>
+
+<footer><div class="wrap small muted" id="pie"></div></footer>
+<div id="indicador-pres" aria-live="polite"></div>
+
+<script src="vendor/chart.umd.min.js"></script>
+<script src="datos.js"></script><script src="narrativa.js"></script>
+<script src="js/base.js"></script>
+<script src="js/sec-texto.js"></script><script src="js/sec-resumen.js"></script><script src="js/sec-comparar.js"></script>
+<script src="js/sec-latencia.js"></script><script src="js/sec-recursos.js"></script>
+<script src="js/sec-vivo.js"></script><script src="js/sec-escalado.js"></script>
+<script>TB.iniciar();</script>
+</body>
+</html>

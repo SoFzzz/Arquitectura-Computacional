@@ -1,0 +1,18 @@
+{
+  "fase": "sostenida_1",
+  "vus": 30,
+  "duracion_s": 300,
+  "peticiones": 119076,
+  "errores": 0,
+  "tasa_error_pct": 0.0,
+  "rps": 396.92,
+  "lat_media_ms": 23.95,
+  "p50_ms": 14.31,
+  "p90_ms": 56.69,
+  "p95_ms": 79.22,
+  "p99_ms": 138.07,
+  "max_ms": 423.55,
+  "red_entrada_kbs": 1146.1,
+  "red_salida_kbs": 41.99,
+  "pausa_s": 0.05
+}

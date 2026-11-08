@@ -1,0 +1,74 @@
+{
+  "_ayuda": "Datos que no salen de la medicion: nombre visible, tipo, precio y capacidad de cada entorno. Edita y vuelve a correr agregar.py.",
+  "slo": {
+    "p95_ms": 300,
+    "error_pct": 1.0
+  },
+  "entornos": {
+    "fisica-local": {
+      "nombre": "Máquina física (portátil)",
+      "tipo": "fisica",
+      "orden": 1,
+      "nucleos_disponibles": 8,
+      "ram_disponible_gb": 24,
+      "costo_mes_usd": 31.0,
+      "costo_detalle": "Supuesto: equipo de ~800 USD amortizado en 36 meses (22,2 USD) + energía 60 W × 730 h × 0,20 USD/kWh (8,8 USD). Ajustar con el precio real del equipo.",
+      "disco_capacidad_mbs": 500,
+      "disco_capacidad_iops": 80000,
+      "red_capacidad_mbps": 1000,
+      "cpu_descripcion": "Intel Core i5-8300H @ 2,30 GHz (4 núcleos / 8 hilos)"
+    },
+    "contenedor-2cpu-1g": {
+      "nombre": "Contenedor (2 CPU, 1 GB)",
+      "tipo": "contenedor",
+      "orden": 2,
+      "nucleos_disponibles": 2,
+      "ram_disponible_gb": 1,
+      "costo_mes_usd": 62.3,
+      "costo_detalle": "Equivalente en AWS Fargate (us-east-1): 2 vCPU × 0,04048 + 1 GB × 0,004445 USD/h × 730 h.",
+      "disco_capacidad_mbs": 500,
+      "disco_capacidad_iops": 80000,
+      "red_capacidad_mbps": 1000,
+      "cpu_descripcion": "Intel Core i5-8300H del portátil, limitado por cgroups"
+    },
+    "contenedor-1cpu-512m": {
+      "nombre": "Contenedor (1 CPU, 512 MB)",
+      "tipo": "contenedor",
+      "orden": 3,
+      "nucleos_disponibles": 1,
+      "ram_disponible_gb": 0.5,
+      "costo_mes_usd": 31.2,
+      "costo_detalle": "Equivalente en AWS Fargate (us-east-1): 1 vCPU × 0,04048 + 0,5 GB × 0,004445 USD/h × 730 h.",
+      "disco_capacidad_mbs": 500,
+      "disco_capacidad_iops": 80000,
+      "red_capacidad_mbps": 1000,
+      "cpu_descripcion": "Intel Core i5-8300H del portátil, limitado por cgroups"
+    },
+    "contenedor-sin-limite": {
+      "nombre": "Contenedor sin límites (control)",
+      "tipo": "control",
+      "orden": 4,
+      "nucleos_disponibles": 8,
+      "ram_disponible_gb": 11.6,
+      "costo_mes_usd": null,
+      "costo_detalle": "Control experimental: mismo hardware que la física, sirve para aislar el costo de la capa de red/virtualización de Docker Desktop.",
+      "disco_capacidad_mbs": 500,
+      "disco_capacidad_iops": 80000,
+      "red_capacidad_mbps": 1000,
+      "cpu_descripcion": "Intel Core i5-8300H del portátil, sin límite"
+    },
+    "aws-t3-small": {
+      "nombre": "AWS EC2 t3.small",
+      "tipo": "nube",
+      "orden": 5,
+      "nucleos_disponibles": 2,
+      "ram_disponible_gb": 2,
+      "costo_mes_usd": 15.82,
+      "costo_detalle": "t3.small on-demand us-east-1: 0,0208 USD/h × 730 h = 15,18 USD + 8 GB gp3 × 0,08 = 0,64 USD (fuente: instances.vantage.sh, aws.amazon.com/ebs/pricing). Instancia con créditos de CPU: línea base 20 % por vCPU; el modo unlimited cobra 0,05 USD por vCPU-hora extra. Elegible en el plan gratuito de AWS.",
+      "disco_capacidad_mbs": 125,
+      "disco_capacidad_iops": 3000,
+      "red_capacidad_mbps": 5000,
+      "cpu_descripcion": "Intel Xeon Platinum (Skylake / Cascade Lake), 2 vCPU = 1 núcleo con 2 hilos"
+    }
+  }
+}

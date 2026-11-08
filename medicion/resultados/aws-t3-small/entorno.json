@@ -1,0 +1,35 @@
+{
+  "entorno": "aws-t3-small",
+  "modo": "local",
+  "fecha": "2026-11-08T18:50:47",
+  "so": "Linux 6.18.56-125.164.amzn2023.x86_64 (#2 SMP PREEMPT_DYNAMIC Mon Oct 19 19:39:29 UTC 2026)",
+  "arquitectura": "x86_64",
+  "nucleos_logicos": 2,
+  "nucleos_fisicos": 1,
+  "ram_total_gb": 1.9,
+  "python": "3.9.25",
+  "cpu": "Intel(R) Xeon(R) Platinum 8259CL CPU @ 2.50GHz",
+  "java_host": "openjdk version \"21.0.13\" 2026-10-20 LTS",
+  "precio_hora_usd": 0.0208,
+  "nota": "AWS EC2 t3.small us-east-1, Amazon Linux 2023, Corretto 21",
+  "arranque_s": 13.53,
+  "protocolo": {
+    "vus": 30,
+    "reps": 3,
+    "duracion_s": 300,
+    "pausa_s": 0.05,
+    "escalado": [
+      5,
+      10,
+      20,
+      40,
+      80,
+      120
+    ],
+    "dur_escalado_s": 45,
+    "reposo_s": 30,
+    "calentamiento_s": 60,
+    "generador": "carga.py (mismo host que la app)"
+  },
+  "arranque_spring_s": 11.345
+}

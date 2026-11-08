@@ -1,0 +1,39 @@
+{
+  "entorno": "contenedor-2cpu-1g",
+  "modo": "docker",
+  "fecha": "2026-11-08T11:02:35",
+  "so": "Windows 10 (10.0.19045)",
+  "arquitectura": "AMD64",
+  "nucleos_logicos": 8,
+  "nucleos_fisicos": 4,
+  "ram_total_gb": 23.8,
+  "python": "3.13.0",
+  "disco": "USB3.0 Super Speed (Unspecified)",
+  "cpu": "Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz",
+  "java_host": "java version \"21.0.7\" 2025-04-15 LTS",
+  "limite_cpus": "2",
+  "limite_memoria": "1g",
+  "imagen": "petclinic-bench",
+  "docker_host": "Docker Desktop | kernel 6.18.54.1-microsoft-standard-WSL2 | 8 CPU | 12460949504 B",
+  "nota": "Docker Desktop/WSL2, --cpus=2 --memory=1g, eclipse-temurin:21-jre-alpine",
+  "arranque_s": 18.02,
+  "protocolo": {
+    "vus": 30,
+    "reps": 3,
+    "duracion_s": 300,
+    "pausa_s": 0.05,
+    "escalado": [
+      5,
+      10,
+      20,
+      40,
+      80,
+      120
+    ],
+    "dur_escalado_s": 45,
+    "reposo_s": 30,
+    "calentamiento_s": 60,
+    "generador": "carga.py (mismo host que la app)"
+  },
+  "arranque_spring_s": 15.089
+}

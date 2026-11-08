@@ -1,0 +1,57 @@
+/* Agente C: #resumen y #comparar · sistema Premium */
+.recom-fila { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--gap); }
+@media (min-width: 1000px) { .recom-fila { grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); } }
+.recom { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: var(--pad); box-shadow: var(--shadow); display: grid; gap: 20px; align-content: start; }
+@media (min-width: 1100px) { .recom { padding: 40px; } }
+.recom-cab { display: flex; align-items: center; gap: 12px; }
+.recom .icono-chip { color: var(--good); background: var(--good-bg); }
+.recom h3 { font-size: 1.5rem; line-height: 1.2; margin: 0; display: block; }
+.recom .texto { font-size: 1rem; color: var(--ink-2); }
+.recom ul.puntos { gap: 16px; font-size: 1rem; color: var(--ink-2); }
+.recom ul.puntos b { color: var(--ink); font-weight: 600; }
+.slo-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: var(--pad); box-shadow: var(--shadow); display: grid; gap: 24px; align-content: start; }
+.slo-card .sub { margin: 0; }
+.slo-pares { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.slo-pares .grande { font-size: 2.25rem; font-weight: 700; line-height: 1.1; letter-spacing: -.01em; white-space: nowrap; font-variant-numeric: tabular-nums; color: var(--ink); }
+.slo-pares .grande small { display: block; margin-top: 4px; font-size: .875rem; font-weight: 500; color: var(--muted); letter-spacing: 0; white-space: normal; }
+.slo-lista { display: grid; gap: 0; font-size: .875rem; }
+.slo-lista div { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 14px; min-height: 56px; border-top: 1px solid var(--border); }
+.slo-lista .nom { display: inline-flex; align-items: center; gap: 10px; font-weight: 500; min-width: 0; }
+.slo-lista .v { font-variant-numeric: tabular-nums; color: var(--ink-2); white-space: nowrap; }
+
+.marcador { overflow-x: auto; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); box-shadow: var(--shadow); }
+.marcador h3 { padding: var(--pad) var(--pad) 0; display: flex; align-items: center; gap: 12px; }
+.marcador .sub { padding: 8px var(--pad) 16px; font-size: .875rem; color: var(--muted); margin: 0; }
+.marcador table { min-width: 940px; font-size: .875rem; }
+.marcador th { padding: 12px; font-size: .75rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); background: transparent; white-space: nowrap; }
+.marcador td { padding: 12px; height: 72px; vertical-align: middle; border-bottom: 1px solid var(--border); }
+.marcador tbody tr { transition: background var(--t); }
+.marcador tbody tr:hover { background: var(--surface-2); }
+.marcador td:first-child, .marcador th:first-child { padding-left: var(--pad); }
+.marcador td:last-child, .marcador th:last-child { padding-right: var(--pad); }
+.marcador td.ent { min-width: 170px; }
+.marcador td.ent .nom { font-size: 1rem; font-weight: 600; }
+.marcador td.ent .tipo { display: block; font-size: .75rem; color: var(--muted); font-weight: 500; margin-left: 22px; }
+.marcador tr.pendiente td { background: repeating-linear-gradient(135deg, transparent 0 10px, color-mix(in srgb, var(--surface-3) 55%, transparent) 10px 20px); }
+.marcador tr.pendiente .llave { background: transparent !important; border: 2px dashed var(--muted); }
+.mb { display: grid; gap: 8px; min-width: 100px; }
+.mb .v { font-size: 1.875rem; font-weight: 600; line-height: 1.1; letter-spacing: -.01em; white-space: nowrap; color: var(--ink); font-variant-numeric: tabular-nums; font-feature-settings: "tnum", "cv11"; }
+.mb .v small { font-size: .75rem; font-weight: 500; color: var(--muted); margin-left: 4px; letter-spacing: 0; }
+.mb .pista { height: 6px; background: var(--surface-3); }
+.mb.sin .v { font-size: 1rem; color: var(--muted); font-weight: 500; }
+.mb.mejor .v::after { content: " ★"; font-size: .875rem; color: var(--muted); }
+.marcador .nota { padding: 16px var(--pad) var(--pad); font-size: .875rem; color: var(--muted); }
+
+.panel .leyenda { margin-bottom: 16px; }
+.panel .nota-excl { margin-top: 12px; font-size: .875rem; color: var(--muted); }
+@media (max-width: 759px) {
+  .slo-pares .grande { font-size: 1.875rem; }
+  .mb .v { font-size: 1.5rem; }
+}
+@media (max-width: 559px) {
+  .slo-pares { grid-template-columns: minmax(0, 1fr); }
+  .slo-lista div { grid-template-columns: minmax(0, 1fr) auto; padding-block: 8px; }
+  .slo-lista .pastilla { grid-column: 1 / -1; }
+}
+@media (max-width: 759px) { .panel.alto-movil .lienzo.protagonista { height: 400px; } }
+.slo-card h3 { display: flex; align-items: center; gap: 12px; }
